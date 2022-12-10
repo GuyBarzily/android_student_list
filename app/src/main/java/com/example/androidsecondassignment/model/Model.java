@@ -9,7 +9,7 @@ public class Model {
         return _instance;
     }
     private Model(){
-        for(int i=0;i<20;i++){
+        for(int i=0;i<3;i++){
             addStudent(new Student("name " + i,""+i,"",false,""+i,""+i));
         }
     }

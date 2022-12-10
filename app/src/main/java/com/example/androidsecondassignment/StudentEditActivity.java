@@ -14,14 +14,20 @@ import com.example.androidsecondassignment.model.Student;
 public class StudentEditActivity extends AppCompatActivity {
 
     Student student;
+    ActionBar actionBar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_student_edit);
+
         student = (Student) getIntent().getSerializableExtra("st");
-        ActionBar actionBar = getSupportActionBar();
+
+        actionBar = getSupportActionBar();
         actionBar.setDisplayHomeAsUpEnabled(true);
+        actionBar.setTitle("Edit Student");
+
+
         Button btn_sub = findViewById(R.id.student_edit_submit);
         btn_sub.setOnClickListener(view -> {
             EditText et_name = findViewById(R.id.student_edit_name);
