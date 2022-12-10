@@ -18,15 +18,15 @@ import org.w3c.dom.Text;
 
 public class StudentDetailsActivity extends AppCompatActivity {
     Student student;
+    ActionBar actionBar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_student_details);
-        ActionBar actionBar = getSupportActionBar();
-
-        // showing the back button in action bar
+        actionBar = getSupportActionBar();
         actionBar.setDisplayHomeAsUpEnabled(true);
+        actionBar.setTitle("Student Details");
         student = (Student) getIntent().getSerializableExtra("st");
 
         ImageView imageView = findViewById(R.id.student_details_image);
