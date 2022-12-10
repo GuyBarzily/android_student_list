@@ -6,8 +6,13 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.widget.CheckBox;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.example.androidsecondassignment.model.Student;
+
+import org.w3c.dom.Text;
 
 public class StudentDetailsActivity extends AppCompatActivity {
     Student student;
@@ -21,7 +26,20 @@ public class StudentDetailsActivity extends AppCompatActivity {
         // showing the back button in action bar
         actionBar.setDisplayHomeAsUpEnabled(true);
         student = (Student) getIntent().getSerializableExtra("pos");
-        System.out.println(student.getId());
+
+        ImageView imageView = findViewById(R.id.student_details_image);
+        TextView tvId = findViewById(R.id.student_details_id);
+        TextView tvName = findViewById(R.id.student_details_name);
+        TextView tvPhone = findViewById(R.id.student_details_phone);
+        TextView tvAddress = findViewById(R.id.student_details_address);
+        CheckBox cb = findViewById(R.id.student_details_cb);
+
+        tvId.setText("ID: " +student.getId());
+        tvName.setText("Name: "+student.getName());
+        tvPhone.setText("Phone: "+student.getPhone());
+        tvAddress.setText("Address: "+student.getAddress());
+
+        cb.setChecked(student.getCb());
     }
 
     @Override

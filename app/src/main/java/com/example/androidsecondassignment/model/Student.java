@@ -8,12 +8,16 @@ public class Student implements Serializable {
     private String id;
     private String avatarUrl;
     private Boolean cb;
+    private String address;
+    private String phone;
 
-    public Student(String name, String id, String avatarUrl, Boolean cb) {
+    public Student(String name, String id, String avatarUrl, Boolean cb,String address, String phone) {
         this.name = name;
         this.id = id;
         this.avatarUrl = avatarUrl;
         this.cb = cb;
+        this.address = address;
+        this.phone = phone;
     }
 
     public String getName() {
@@ -46,5 +50,21 @@ public class Student implements Serializable {
 
     public void setCb(Boolean cb) {
         this.cb = cb;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
     }
 }
