@@ -28,7 +28,7 @@ public class StudentEditActivity extends AppCompatActivity {
         actionBar.setTitle("Edit Student");
 
 
-        Button btn_sub = findViewById(R.id.student_edit_submit);
+        Button btn_sub = findViewById(R.id.student_edit_save);
         btn_sub.setOnClickListener(view -> {
             EditText et_name = findViewById(R.id.student_edit_name);
             student.setName(et_name.getText().toString());
