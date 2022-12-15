@@ -12,13 +12,15 @@ import android.widget.CheckBox;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.example.androidsecondassignment.model.Model;
 import com.example.androidsecondassignment.model.Student;
 
-import org.w3c.dom.Text;
+import java.util.List;
 
 public class StudentDetailsActivity extends AppCompatActivity {
     Student student;
     ActionBar actionBar;
+    Integer pos;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,7 +29,9 @@ public class StudentDetailsActivity extends AppCompatActivity {
         actionBar = getSupportActionBar();
         actionBar.setDisplayHomeAsUpEnabled(true);
         actionBar.setTitle("Student Details");
-        student = (Student) getIntent().getSerializableExtra("st");
+        pos = getIntent().getIntExtra("pos",-1);
+        student = Model.instance().getAllStudents().get(pos);
+
 
         ImageView imageView = findViewById(R.id.student_details_image);
         TextView tvId = findViewById(R.id.student_details_id);
@@ -43,12 +47,27 @@ public class StudentDetailsActivity extends AppCompatActivity {
         tvAddress.setText("Address: "+student.getAddress());
         cb.setChecked(student.getCb());
 
+
+
+
+        cb.setOnClickListener(view -> {
+            student.setCb(cb.isChecked());
+            System.out.println(student.getCb());
+        });
+
         btn_edit.setOnClickListener(view -> {
             Intent intent = new Intent(this, StudentEditActivity.class);
-            intent.putExtra("st", student);
+            intent.putExtra("pos", pos);
             startActivity(intent);
         });
     }
+
+
+//    @Override
+//    protected void onResume() {
+//        super.onResume();
+//
+//    }
 
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {

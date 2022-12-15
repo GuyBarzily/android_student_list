@@ -57,7 +57,7 @@ public class StudentRecyclerListActivity extends AppCompatActivity {
             public void onItemClick(int pos) {
                 Student st = data.get(pos);
                 Intent intent = new Intent(StudentRecyclerListActivity.this,StudentDetailsActivity.class);
-                intent.putExtra("st",st);
+                intent.putExtra("pos",pos);
 
                 startActivity(intent);
                 Log.d("TAG", "Row was clicked " + String.valueOf(st.getId()));

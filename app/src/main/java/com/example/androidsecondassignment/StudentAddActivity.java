@@ -38,7 +38,7 @@ public class StudentAddActivity extends AppCompatActivity {
         imageView = findViewById(R.id.student_add_image);
 
         imageView.setOnClickListener(view -> {
-            imageView.setImageResource(R.drawable.avatar2);
+//            imageView.setImageResource(R.drawable.avatar2);
         });
 
 
