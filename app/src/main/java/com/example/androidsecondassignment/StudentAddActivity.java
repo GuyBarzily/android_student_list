@@ -4,9 +4,11 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Adapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -48,8 +50,6 @@ public class StudentAddActivity extends AppCompatActivity {
                     false,address.getText().toString(),phone.getText().toString());
 
             Model.instance().addStudent(st);
-
-
             this.finish();
 
         });

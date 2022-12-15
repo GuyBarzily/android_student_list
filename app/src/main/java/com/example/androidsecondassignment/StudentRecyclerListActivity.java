@@ -6,8 +6,11 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.os.Parcelable;
 import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,10 +22,12 @@ import android.widget.TextView;
 import com.example.androidsecondassignment.model.Model;
 import com.example.androidsecondassignment.model.Student;
 
+import java.io.Serializable;
 import java.util.List;
 public class StudentRecyclerListActivity extends AppCompatActivity {
     List<Student> data;
     ActionBar actionBar;
+    StudentRecyclerAdapter adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,12 +42,13 @@ public class StudentRecyclerListActivity extends AppCompatActivity {
         list.setHasFixedSize(true);
 
         list.setLayoutManager(new LinearLayoutManager(this));
-        StudentRecyclerAdapter adapter = new StudentRecyclerAdapter();
+        adapter = new StudentRecyclerAdapter();
         list.setAdapter(adapter);
 
         Button add_btn = findViewById(R.id.student_recycler_addbtn);
         add_btn.setOnClickListener(view -> {
             Intent intent = new Intent(this,StudentAddActivity.class);
+//            intent.putExtra("adapter",  adapter);
             startActivity(intent);
         });
 
@@ -59,6 +65,19 @@ public class StudentRecyclerListActivity extends AppCompatActivity {
         });
     }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+        adapter.notifyDataSetChanged();
+
+//        data = Model.instance().getAllStudents();
+//        RecyclerView list = findViewById(R.id.student_recycler_list);
+//        list.setHasFixedSize(true);
+//
+//        list.setLayoutManager(new LinearLayoutManager(this));
+//        StudentRecyclerAdapter adapter = new StudentRecyclerAdapter();
+//        list.setAdapter(adapter);
+    }
 
 
     class StudentViewHolder extends RecyclerView.ViewHolder{
@@ -76,6 +95,7 @@ public class StudentRecyclerListActivity extends AppCompatActivity {
                     int pos = (int)cb.getTag();
                     Student st = data.get(pos);
                     st.setCb( cb.isChecked());
+
                 }
             });
             itemView.setOnClickListener(new View.OnClickListener() {
@@ -98,7 +118,7 @@ public class StudentRecyclerListActivity extends AppCompatActivity {
     public interface OnItemClickListener{
         void onItemClick(int pos);
     }
-    class StudentRecyclerAdapter extends RecyclerView.Adapter<StudentViewHolder>{
+    class StudentRecyclerAdapter extends RecyclerView.Adapter<StudentViewHolder>  {
         OnItemClickListener listener;
         void setOnItemClickListener(OnItemClickListener listener){
             this.listener = listener;

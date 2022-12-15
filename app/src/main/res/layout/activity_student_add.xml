@@ -27,7 +27,7 @@
         android:height="48dp"
         android:ems="10"
         android:hint="Id"
-        android:inputType="textPersonName"
+        android:inputType="number"
         app:layout_constraintBottom_toTopOf="@+id/student_add_name"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/student_add_image" />
@@ -54,7 +54,7 @@
         android:height="48dp"
         android:ems="10"
         android:hint="Phone"
-        android:inputType="textPersonName"
+        android:inputType="phone"
         app:layout_constraintBottom_toTopOf="@+id/student_add_address"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/student_add_name" />
@@ -92,4 +92,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/student_add_cancelBtn" />
+
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>
